@@ -1,0 +1,56 @@
+<div class="p-6">
+
+  <div class="mb-6 flex justify-between items-center">
+    <div>
+      <h1 class="text-2xl font-bold">Detalle del ciudadano</h1>
+      <p class="text-gray-600">
+        Consulta la información registrada del ciudadano.
+      </p>
+    </div>
+
+    <button class="border rounded-lg px-4 py-2" (click)="goBack()">
+      Volver
+    </button>
+  </div>
+
+  @if (loading) {
+    <div class="bg-white rounded-lg shadow p-5">
+      Cargando ciudadano...
+    </div>
+  }
+
+  @if (!loading && citizen) {
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+      <div class="bg-white rounded-lg shadow p-5">
+        <h2 class="text-lg font-semibold mb-4">Información personal</h2>
+
+        <div class="space-y-3">
+          <p><strong>Nombre:</strong> {{ citizen.name }}</p>
+          <p><strong>Correo:</strong> {{ citizen.email }}</p>
+          <p><strong>Celular:</strong> {{ citizen.phone }}</p>
+          <p><strong>Dirección:</strong> {{ citizen.address }}</p>
+          <p><strong>Estado:</strong> {{ citizen.status }}</p>
+        </div>
+
+        <div class="mt-6 flex gap-3">
+          <button class="bg-blue-600 text-white rounded-lg px-4 py-2" (click)="goEdit()">
+            Editar ciudadano
+          </button>
+
+          <button class="border rounded-lg px-4 py-2" (click)="goBack()">
+            Volver al listado
+          </button>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg shadow p-5">
+        <h2 class="text-lg font-semibold mb-4">Ubicación registrada</h2>
+
+        <div id="citizen-detail-map" class="map-container rounded-lg"></div>
+      </div>
+
+    </div>
+  }
+
+</div>

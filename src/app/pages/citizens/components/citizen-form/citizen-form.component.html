@@ -1,0 +1,89 @@
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6" *ngIf="form">
+
+  <form class="bg-white rounded-lg shadow p-5" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <h2 class="text-lg font-semibold mb-4">Información personal</h2>
+
+    <div class="mb-4">
+      <label class="block text-sm font-medium mb-1">Nombre completo *</label>
+      <input class="w-full border rounded-lg px-3 py-2" type="text" formControlName="name">
+      <p class="text-red-500 text-sm mt-1" *ngIf="isInvalid('name')">El nombre es obligatorio.</p>
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-sm font-medium mb-1">Correo electrónico *</label>
+      <input class="w-full border rounded-lg px-3 py-2" type="email" formControlName="email">
+      <p class="text-red-500 text-sm mt-1" *ngIf="isInvalid('email')">Ingresa un correo válido.</p>
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-sm font-medium mb-1">Celular *</label>
+      <input class="w-full border rounded-lg px-3 py-2" type="text" formControlName="phone">
+      <p class="text-red-500 text-sm mt-1" *ngIf="isInvalid('phone')">Ingresa un celular válido.</p>
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-sm font-medium mb-1">Dirección *</label>
+      <input class="w-full border rounded-lg px-3 py-2" type="text" formControlName="address">
+      <p class="text-red-500 text-sm mt-1" *ngIf="isInvalid('address')">La dirección es obligatoria.</p>
+    </div>
+
+    <div class="grid grid-cols-2 gap-3 mb-4">
+      <div>
+        <label class="block text-sm font-medium mb-1">Latitud *</label>
+        <input class="w-full border rounded-lg px-3 py-2" type="number" step="any" formControlName="latitude">
+        <p class="text-red-500 text-sm mt-1" *ngIf="isInvalid('latitude')">La latitud es obligatoria.</p>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium mb-1">Longitud *</label>
+        <input class="w-full border rounded-lg px-3 py-2" type="number" step="any" formControlName="longitude">
+        <p class="text-red-500 text-sm mt-1" *ngIf="isInvalid('longitude')">La longitud es obligatoria.</p>
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-sm font-medium mb-1">Estado *</label>
+      <select class="w-full border rounded-lg px-3 py-2" formControlName="status">
+        <option value="active">Activo</option>
+        <option value="inactive">Inactivo</option>
+      </select>
+    </div>
+
+    <div class="bg-blue-50 text-blue-700 rounded-lg p-3 text-sm mb-4">
+      Haz clic en el mapa para colocar el pin del ciudadano.
+    </div>
+
+    <div class="flex gap-3">
+      <button type="button" class="w-1/2 border rounded-lg px-4 py-2" (click)="onCancel()">
+        Cancelar
+      </button>
+
+      <button type="submit" class="w-1/2 bg-blue-600 text-white rounded-lg px-4 py-2" [disabled]="loading">
+        {{ loading ? 'Guardando...' : buttonText }}
+      </button>
+    </div>
+
+  </form>
+
+  <div class="bg-white rounded-lg shadow p-5">
+
+    <h2 class="text-lg font-semibold mb-4">Ubicación del ciudadano</h2>
+
+    <div id="citizen-map" class="map-container rounded-lg mb-4"></div>
+
+    <p class="text-sm text-gray-600 mb-1">
+      Lat: {{ form.value.latitude || 'Sin seleccionar' }}
+    </p>
+
+    <p class="text-sm text-gray-600 mb-4">
+      Lng: {{ form.value.longitude || 'Sin seleccionar' }}
+    </p>
+
+    <button type="button" class="border border-red-400 text-red-500 rounded-lg px-4 py-2" (click)="clearLocation()">
+      Limpiar ubicación
+    </button>
+
+  </div>
+
+</div>

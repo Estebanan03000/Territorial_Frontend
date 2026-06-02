@@ -9,7 +9,12 @@ export const navItems: NavItem[] = [
     iconName: 'solar:atom-line-duotone',
     route: '/dashboard',
   },
-
+  {
+    displayName: 'Ciudadanos',
+    iconName: 'solar:users-group-rounded-line-duotone',
+    route: '/citizens/list',
+  },
+  
   {
     navCap: 'Ui Components',
   },

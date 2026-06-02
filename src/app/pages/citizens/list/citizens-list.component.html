@@ -1,0 +1,42 @@
+<div class="p-6">
+
+  <div class="mb-6">
+    <h1 class="text-2xl font-bold">Gestión de Ciudadanos</h1>
+    <p class="text-gray-600">
+      Administra la información de los ciudadanos registrados en el sistema.
+    </p>
+  </div>
+
+  <div class="bg-white rounded-lg shadow p-4">
+
+    <div class="flex justify-between items-center mb-4">
+      <div>
+        <h2 class="text-lg font-semibold">Ciudadanos registrados</h2>
+        <p class="text-gray-600 text-sm">
+          Consulta, agrega, edita o elimina los ciudadanos del sistema.
+        </p>
+      </div>
+
+      <button
+        class="px-4 py-2 bg-blue-600 text-white rounded-lg"
+        routerLink="/citizens/create">
+        Nuevo ciudadano
+      </button>
+    </div>
+
+    <app-dynamic-table
+      [data]="citizens"
+      [columns]="columns"
+      [actions]="actions"
+      [loading]="loading"
+      [totalItems]="total"
+      [totalPages]="totalPages"
+      [page]="page"
+      [pageSize]="pageSize"
+      (pageChange)="onPageChange($event)"
+      (action)="onTableAction($event)">
+    </app-dynamic-table>
+
+  </div>
+
+</div>
