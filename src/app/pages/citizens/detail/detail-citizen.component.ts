@@ -56,6 +56,11 @@ export class DetailCitizenComponent implements OnInit {
           }
         }, 100);
       },
+      error: () => {
+        this.loading = false;
+        alert('No se pudo cargar el ciudadano.');
+        this.router.navigate(['/citizens/list']);
+      }
     });
   }
 

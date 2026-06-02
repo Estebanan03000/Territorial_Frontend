@@ -67,11 +67,11 @@ export class CitizensListComponent implements OnInit {
   loadCitizens(page = this.page, pageSize = this.pageSize): void {
     this.loading = true;
 
-    console.log('PIDIENDO CIUDADANOS:', page, pageSize);
+    
 
     this.citizensService.getPaged(page, pageSize).subscribe({
       next: (resp) => {
-        console.log('RESPUESTA CIUDADANOS:', resp);
+
 
         this.citizens = resp.items || [];
         this.page = page;

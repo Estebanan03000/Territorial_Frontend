@@ -43,6 +43,7 @@ export const routes: Routes = [
       },
       {
         path: 'citizens',
+        canActivateChild: [AuthenticatedGuard],
         children: [
           {
             path: '',
