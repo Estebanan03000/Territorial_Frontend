@@ -1,0 +1,112 @@
+<mat-card class="cardWithShadow theme-card">
+  <div class="p-6">
+    <mat-card-title class="mb-0">
+      {{ isEditMode ? 'Editar funcionario' : 'Crear funcionario' }}
+    </mat-card-title>
+  </div>
+
+  <mat-card-content class="border-t border-border">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="grid grid-cols-12 gap-x-6">
+        <div class="col-span-12 lg:col-span-6">
+          <mat-label class="font-semibold mb-2 block">Entidad</mat-label>
+          <mat-form-field appearance="outline" class="w-full" color="primary">
+            <mat-select formControlName="id_entity" placeholder="Seleccione una entidad">
+              <mat-option *ngFor="let entity of entities" [value]="entity.id_entity">
+                {{ entity.name }}
+              </mat-option>
+            </mat-select>
+
+            <mat-error [hidden]="!(f['id_entity'].invalid && (f['id_entity'].dirty || f['id_entity'].touched))">
+              <span [hidden]="!f['id_entity'].hasError('required')">La entidad es obligatoria.</span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-span-12 lg:col-span-6">
+          <mat-label class="font-semibold mb-2 block">Nombre</mat-label>
+          <mat-form-field appearance="outline" class="w-full" color="primary">
+            <input matInput formControlName="name" placeholder="Ingrese el nombre" />
+
+            <mat-error [hidden]="!(f['name'].invalid && (f['name'].dirty || f['name'].touched))">
+              <span [hidden]="!f['name'].hasError('required')">El nombre es obligatorio.</span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-span-12 lg:col-span-6">
+          <mat-label class="font-semibold mb-2 block">Correo</mat-label>
+          <mat-form-field appearance="outline" class="w-full" color="primary">
+            <input matInput formControlName="email" type="email" placeholder="correo@ejemplo.com" />
+
+            <mat-error [hidden]="!(f['email'].invalid && (f['email'].dirty || f['email'].touched))">
+              <span [hidden]="!f['email'].hasError('required')">El correo es obligatorio.</span>
+              <span [hidden]="!f['email'].hasError('email')">Ingrese un correo válido.</span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-span-12 lg:col-span-6">
+          <mat-label class="font-semibold mb-2 block">Celular</mat-label>
+          <mat-form-field appearance="outline" class="w-full" color="primary">
+            <input matInput formControlName="phone" placeholder="Ingrese el celular" />
+
+            <mat-error [hidden]="!(f['phone'].invalid && (f['phone'].dirty || f['phone'].touched))">
+              <span [hidden]="!f['phone'].hasError('pattern')">Use solo números y símbolos básicos.</span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-span-12 lg:col-span-4">
+          <mat-label class="font-semibold mb-2 block">Rol / cargo</mat-label>
+          <mat-form-field appearance="outline" class="w-full" color="primary">
+            <mat-select formControlName="role" placeholder="Seleccione un rol">
+              <mat-option *ngFor="let role of roleOptions" [value]="role">
+                {{ role }}
+              </mat-option>
+            </mat-select>
+
+            <mat-error [hidden]="!(f['role'].invalid && (f['role'].dirty || f['role'].touched))">
+              <span [hidden]="!f['role'].hasError('required')">El rol es obligatorio.</span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-span-12 lg:col-span-4">
+          <mat-label class="font-semibold mb-2 block">Estado</mat-label>
+          <mat-form-field appearance="outline" class="w-full" color="primary">
+            <mat-select formControlName="status" placeholder="Seleccione el estado">
+              <mat-option *ngFor="let status of statusOptions" [value]="status">
+                {{ status }}
+              </mat-option>
+            </mat-select>
+
+            <mat-error [hidden]="!(f['status'].invalid && (f['status'].dirty || f['status'].touched))">
+              <span [hidden]="!f['status'].hasError('required')">El estado es obligatorio.</span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-span-12 lg:col-span-4">
+          <mat-label class="font-semibold mb-2 block">Seguimiento GPS</mat-label>
+          <mat-form-field appearance="outline" class="w-full" color="primary">
+            <mat-select formControlName="gps_active">
+              <mat-option [value]="true">Activo</mat-option>
+              <mat-option [value]="false">Inactivo</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="mt-3 flex gap-2">
+        <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid" class="w-36 flex justify-center items-center">
+          {{ isEditMode ? 'Actualizar' : 'Crear' }}
+        </button>
+
+        <button mat-flat-button color="warn" type="button" (click)="onCancel()" class="w-36 flex justify-center items-center">
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

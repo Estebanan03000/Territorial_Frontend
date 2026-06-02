@@ -51,7 +51,13 @@ export const routes: Routes = [
               import('./pages/citizens/citizens.routes').then((m) => m.CitizensRoutes)
           }
         ]
-      }
+      },
+      {
+        path: 'officials',
+        canActivateChild: [AuthenticatedGuard],
+        loadChildren: () =>
+          import('./pages/officials/officials.routes').then((m) => m.OfficialsRoutes),
+      },
     ],
   },
   {

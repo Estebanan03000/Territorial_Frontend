@@ -1,0 +1,91 @@
+<mat-card>
+  <mat-card-content>
+    <div *ngIf="loading" class="p-4 text-center">
+      Cargando funcionarios...
+    </div>
+
+    <div *ngIf="!loading && officials.length === 0" class="p-4 text-center">
+      No hay funcionarios registrados.
+    </div>
+
+    <div *ngIf="!loading && officials.length > 0" class="overflow-auto">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="border-b">
+            <th class="text-left p-2">Nombre</th>
+            <th class="text-left p-2">Correo</th>
+            <th class="text-left p-2">Teléfono</th>
+            <th class="text-left p-2">Rol / cargo</th>
+            <th class="text-left p-2">Entidad</th>
+            <th class="text-left p-2">Estado</th>
+            <th class="text-left p-2">GPS</th>
+            <th class="text-left p-2">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let official of officials" class="border-b">
+            <td class="p-2">{{ official.name }}</td>
+            <td class="p-2">{{ official.email }}</td>
+            <td class="p-2">{{ official.phone || 'Sin teléfono' }}</td>
+            <td class="p-2">{{ official.role }}</td>
+            <td class="p-2">{{ getEntityName(official.id_entity) }}</td>
+            <td class="p-2">{{ official.status }}</td>
+            <td class="p-2">
+              <span *ngIf="official.gps_active">Activo</span>
+              <span *ngIf="!official.gps_active">Inactivo</span>
+            </td>
+            <td class="p-2">
+              <div class="flex flex-wrap gap-2">
+                <button mat-stroked-button color="primary" type="button" (click)="onEdit(official)">
+                  Editar
+                </button>
+
+                <button
+                  *ngIf="isActive(official)"
+                  mat-stroked-button
+                  color="warn"
+                  type="button"
+                  (click)="onDeactivate(official)"
+                >
+                  Desactivar
+                </button>
+
+                <button
+                  *ngIf="!isActive(official)"
+                  mat-stroked-button
+                  color="primary"
+                  type="button"
+                  (click)="onActivate(official)"
+                >
+                  Activar
+                </button>
+
+                <button
+                  *ngIf="!official.gps_active"
+                  mat-stroked-button
+                  type="button"
+                  (click)="onStartTracking(official)"
+                >
+                  Activar GPS
+                </button>
+
+                <button
+                  *ngIf="official.gps_active"
+                  mat-stroked-button
+                  type="button"
+                  (click)="onStopTracking(official)"
+                >
+                  Detener GPS
+                </button>
+
+                <button mat-stroked-button color="warn" type="button" (click)="onDelete(official)">
+                  Eliminar
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-card-content>
+</mat-card>

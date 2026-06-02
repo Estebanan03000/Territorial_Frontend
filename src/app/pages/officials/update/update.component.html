@@ -1,0 +1,12 @@
+<div class="p-4">
+  <div *ngIf="loading" class="p-4 text-center">
+    Cargando funcionario...
+  </div>
+
+  <app-official-form
+    *ngIf="!loading && official"
+    [official]="official"
+    (formSubmit)="save($event)"
+    (cancel)="cancel()"
+  ></app-official-form>
+</div>

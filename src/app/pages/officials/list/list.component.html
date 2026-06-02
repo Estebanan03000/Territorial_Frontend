@@ -1,0 +1,48 @@
+<div class="p-4">
+  <mat-card class="mb-4">
+    <mat-card-content>
+      <div class="flex justify-between items-center gap-4">
+        <div>
+          <h2 class="text-xl font-semibold">Gestión de funcionarios</h2>
+          <p class="text-sm mt-1">Crear, consultar, editar, activar, desactivar y eliminar funcionarios.</p>
+        </div>
+
+        <button mat-flat-button color="primary" type="button" (click)="goToCreate()">
+          Crear funcionario
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <app-official-filter
+    [entities]="entities"
+    (filterChange)="onFilter($event)"
+  ></app-official-filter>
+
+  <app-official-table
+    [officials]="officials"
+    [entities]="entities"
+    [loading]="loading"
+    (editOfficial)="goToUpdate($event)"
+    (deleteOfficial)="deleteOfficial($event)"
+    (activateOfficial)="activateOfficial($event)"
+    (deactivateOfficial)="deactivateOfficial($event)"
+    (startTrackingOfficial)="startTracking($event)"
+    (stopTrackingOfficial)="stopTracking($event)"
+  ></app-official-table>
+
+  <div class="flex justify-between items-center mt-4" *ngIf="totalItems > 0">
+    <div class="text-sm">
+      Página {{ page }} de {{ totalPages }} - Total: {{ totalItems }} funcionarios
+    </div>
+
+    <div class="flex gap-2">
+      <button mat-stroked-button type="button" [disabled]="page <= 1" (click)="previousPage()">
+        Anterior
+      </button>
+      <button mat-stroked-button type="button" [disabled]="page >= totalPages" (click)="nextPage()">
+        Siguiente
+      </button>
+    </div>
+  </div>
+</div>
