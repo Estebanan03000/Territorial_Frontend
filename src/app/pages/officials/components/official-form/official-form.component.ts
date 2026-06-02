@@ -6,9 +6,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { Entity } from '../../../../../models/entity';
-import { Official, OfficialPayload } from '../../../../../models/official';
-import { EntitiesService } from '../../../../../services/entities.service';
+import { Entity } from '../../../../models/entity';
+import { Official, OfficialPayload } from '../../../../models/official';
+import { EntitiesService } from '../../../../services/entities.service';
 
 @Component({
   selector: 'app-official-form',

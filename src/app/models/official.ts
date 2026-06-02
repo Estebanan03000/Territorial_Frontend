@@ -12,6 +12,22 @@ export interface Official {
   gps_active?: boolean;
 }
 
+export interface OfficialPayload {
+  id_entity: number;
+  name: string;
+  email: string;
+  phone?: string | null;
+  role: string;
+  status: string;
+  gps_active: boolean;
+}
+
+export interface OfficialFilters {
+  q?: string;
+  id_entity?: number;
+  status?: string;
+}
+
 export interface OfficialTrackingRequest {
   ids: number[];
 }

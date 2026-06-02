@@ -2,8 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { Entity } from '../../../../../models/entity';
-import { Official } from '../../../../../models/official';
+import { Entity } from '../../../../models/entity';
+import { Official } from '../../../../models/official';
 
 @Component({
   selector: 'app-official-table',
