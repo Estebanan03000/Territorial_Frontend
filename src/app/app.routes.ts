@@ -53,6 +53,17 @@ export const routes: Routes = [
         ]
       },
       {
+        path: 'neighborhoods',
+        //canActivateChild: [AuthenticatedGuard],
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('./pages/neighborhoods/neighborhoods.routes').then((m) => m.NeighborhoodsRoutes)
+          }
+        ]
+      },
+      {
         path: 'officials',
         canActivateChild: [AuthenticatedGuard],
         loadChildren: () =>

@@ -23,6 +23,7 @@ export interface OfficialPayload {
 }
 
 export interface OfficialFilters {
+  [key: string]: string | number | undefined;
   q?: string;
   id_entity?: number;
   status?: string;

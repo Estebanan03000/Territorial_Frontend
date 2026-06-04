@@ -1,0 +1,27 @@
+<div class="p-6">
+
+  <div class="mb-6">
+    <h1 class="text-2xl font-bold">Editar barrio</h1>
+    <p class="text-gray-600">
+      Modifica la comuna, el nombre o el estado del barrio.
+    </p>
+  </div>
+
+  <div class="max-w-2xl">
+    @if (neighborhood) {
+      <app-neighborhood-form
+        [neighborhood]="neighborhood"
+        [communes]="communes"
+        buttonText="Actualizar barrio"
+        [loading]="loading"
+        (formSubmit)="onUpdate($event)"
+        (cancel)="onCancel()">
+      </app-neighborhood-form>
+    } @else {
+      <div class="bg-white rounded-lg shadow p-5">
+        Cargando barrio...
+      </div>
+    }
+  </div>
+
+</div>

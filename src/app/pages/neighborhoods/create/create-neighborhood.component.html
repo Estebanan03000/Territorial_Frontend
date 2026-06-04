@@ -1,0 +1,20 @@
+<div class="p-6">
+
+  <div class="mb-6">
+    <h1 class="text-2xl font-bold">Nuevo barrio</h1>
+    <p class="text-gray-600">
+      Selecciona la comuna e ingresa la información del barrio.
+    </p>
+  </div>
+
+  <div class="max-w-2xl">
+    <app-neighborhood-form
+      [communes]="communes"
+      buttonText="Guardar barrio"
+      [loading]="loading"
+      (formSubmit)="onCreate($event)"
+      (cancel)="onCancel()">
+    </app-neighborhood-form>
+  </div>
+
+</div>
