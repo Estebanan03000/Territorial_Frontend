@@ -39,6 +39,55 @@
             }
 
           </form>
+
+          <div class="mt-6">
+
+            <div class="flex items-center my-4">
+              <div class="flex-grow border-t"></div>
+
+              <span class="mx-4 text-gray-500">
+                O continúa con
+              </span>
+
+              <div class="flex-grow border-t"></div>
+            </div>
+
+            <div class="grid grid-cols-1 gap-3">
+
+              <button
+                type="button"
+                mat-stroked-button
+                class="w-full"
+                (click)="loginWithGoogle()">
+
+                🔴 Continuar con Google
+
+              </button>
+
+              <button
+                type="button"
+                mat-stroked-button
+                class="w-full"
+                (click)="loginWithMicrosoft()">
+
+                🟦 Continuar con Microsoft
+
+              </button>
+
+              <button
+                type="button"
+                mat-stroked-button
+                class="w-full"
+                (click)="loginWithGithub()">
+
+                ⚫ Continuar con GitHub
+
+              </button>
+
+            </div>
+
+          </div>
+
           <span class="block font-medium text-center mt-6">New to Modernize?
             <a [routerLink]="['/authentication/register']" class="no-underline text-primary font-medium text-sm">
               Create an account</a>
