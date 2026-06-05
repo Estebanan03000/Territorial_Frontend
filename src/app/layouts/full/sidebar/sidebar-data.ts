@@ -29,7 +29,11 @@ export const navItems: NavItem[] = [
     iconName: 'solar:widget-2-line-duotone',
     route: '/categories/list',
   },
-
+  {
+    displayName: 'Barrios',
+    iconName: 'solar:home-2-line-duotone',
+    route: '/neighborhoods/list',
+  },
   {
     navCap: 'Ui Components',
   },

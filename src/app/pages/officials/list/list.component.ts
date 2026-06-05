@@ -68,7 +68,7 @@ export class ListComponent implements OnInit {
         this.totalPages = response.totalPages;
         this.loading = false;
       },
-      error: (error) => {
+      error: (error: any) => {
         this.officials = [];
         this.loading = false;
 
@@ -106,7 +106,7 @@ export class ListComponent implements OnInit {
             Swal.fire('Eliminado', 'El funcionario fue eliminado correctamente.', 'success');
             this.loadOfficials();
           },
-          error: (error) => {
+          error: (error: any) => {
             Swal.fire('Error', this.getErrorMessage(error), 'error');
           },
         });

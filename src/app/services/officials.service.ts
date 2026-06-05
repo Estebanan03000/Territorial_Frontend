@@ -67,4 +67,16 @@ export class OfficialsService {
   stopTracking(ids?: number[]): Observable<OfficialTrackingStopResponse> {
     return this.http.post<OfficialTrackingStopResponse>(`${this.apiUrl}/tracking/stop`, { ids });
   }
+  
+  changeStatus(official: any, status: string) {
+    return this.update(official.id_official, {
+      id_entity: official.id_entity,
+      name: official.name,
+      email: official.email,
+      phone: official.phone,
+      role: official.role,
+      status,
+      gps_active: official.gps_active ?? false
+    });
+  }
 }
