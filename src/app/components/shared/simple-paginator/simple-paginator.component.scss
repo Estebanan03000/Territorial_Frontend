@@ -1,0 +1,18 @@
+.paginator {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+  gap: 16px;
+}
+
+.paginator p {
+  margin: 0;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}

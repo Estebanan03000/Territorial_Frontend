@@ -1,0 +1,89 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Comunas registradas</mat-card-title>
+    <mat-card-subtitle>
+      Consulta, edita y elimina las comunas del sistema.
+    </mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div *ngIf="loading" class="state-message">
+      Cargando comunas...
+    </div>
+
+    <div *ngIf="!loading && communes.length === 0" class="state-message">
+      No hay comunas registradas.
+    </div>
+
+    <div class="table-container" *ngIf="!loading && communes.length > 0">
+      <table>
+        <thead>
+          <tr>
+            <th>Comuna</th>
+            <th>Ciudad</th>
+            <th>Departamento</th>
+            <th>Barrios asociados</th>
+            <th>Estado</th>
+            <th class="actions-column">Acciones</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let commune of communes">
+            <td>
+              <strong>{{ commune.name }}</strong>
+            </td>
+
+            <td>
+              {{ getCityName(commune.id_city) }}
+            </td>
+
+            <td>
+              {{ getDepartmentName(commune.id_city) }}
+            </td>
+
+            <td>
+              <button
+                mat-button
+                type="button"
+                (click)="onViewNeighborhoods(commune)">
+                {{ getNeighborhoodCount(commune) }}
+              </button>
+            </td>
+
+            <td>
+              <app-status-badge [status]="commune.status || ''"></app-status-badge>
+            </td>
+
+            <td class="actions-column">
+              <button mat-button color="primary" type="button" (click)="onEdit(commune)">
+                Editar
+              </button>
+
+              <button
+                mat-button
+                color="accent"
+                type="button"
+                *ngIf="!isActive(commune)"
+                (click)="onActivate(commune)">
+                Activar
+              </button>
+
+              <button
+                mat-button
+                type="button"
+                *ngIf="isActive(commune)"
+                (click)="onDeactivate(commune)">
+                Desactivar
+              </button>
+
+              <button mat-button color="warn" type="button" (click)="onDelete(commune)">
+                Eliminar
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-card-content>
+</mat-card>

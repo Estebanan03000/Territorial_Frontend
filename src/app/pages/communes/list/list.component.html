@@ -1,0 +1,36 @@
+<div class="page-header">
+  <div>
+    <h1>Gestión de Comunas</h1>
+    <p>Administra comunas del municipio.</p>
+  </div>
+
+  <button mat-flat-button color="primary" type="button" (click)="goToCreate()">
+    Nueva comuna
+  </button>
+</div>
+
+<app-commune-filter
+  (filterChange)="onFilter($event)">
+</app-commune-filter>
+
+<app-commune-table
+  [communes]="communes"
+  [cities]="cities"
+  [departments]="departments"
+  [neighborhoods]="neighborhoods"
+  [loading]="loading"
+  (editCommune)="goToUpdate($event)"
+  (deleteCommune)="deleteCommune($event)"
+  (activateCommune)="activateCommune($event)"
+  (deactivateCommune)="deactivateCommune($event)"
+  (viewNeighborhoods)="viewNeighborhoods($event)">
+</app-commune-table>
+
+<app-simple-paginator
+  [page]="page"
+  [totalPages]="totalPages"
+  [totalItems]="totalItems"
+  itemLabel="comunas"
+  (previousPage)="previousPage()"
+  (nextPage)="nextPage()">
+</app-simple-paginator>

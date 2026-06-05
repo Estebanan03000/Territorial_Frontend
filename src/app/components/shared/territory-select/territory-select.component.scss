@@ -1,0 +1,11 @@
+.territory-select {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+@media (max-width: 768px) {
+  .territory-select {
+    grid-template-columns: 1fr;
+  }
+}

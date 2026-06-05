@@ -1,0 +1,36 @@
+<mat-card class="filter-card">
+  <mat-card-content>
+    <div class="filter-grid">
+      <app-territory-select
+        [clearSignal]="clearSignal"
+        (selectionChange)="onTerritoryChange($event)">
+      </app-territory-select>
+
+      <form [formGroup]="form" class="filter-form">
+        <mat-form-field appearance="outline">
+          <mat-label>Buscar comuna</mat-label>
+          <input matInput formControlName="q" placeholder="Ej. Comuna 1">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Estado</mat-label>
+          <mat-select formControlName="status">
+            <mat-option value="">Todos</mat-option>
+            <mat-option value="activo">Activa</mat-option>
+            <mat-option value="inactivo">Inactiva</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div class="filter-actions">
+          <button mat-flat-button color="primary" type="button" (click)="onSearch()">
+            Filtrar
+          </button>
+
+          <button mat-stroked-button type="button" (click)="onClear()">
+            Limpiar
+          </button>
+        </div>
+      </form>
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,16 @@
+<div class="paginator">
+  <p>
+    Página {{ page }} de {{ totalPages || 1 }} -
+    Total: {{ totalItems }} {{ itemLabel }}
+  </p>
+
+  <div class="actions">
+    <button mat-stroked-button type="button" [disabled]="!hasPrevious" (click)="onPrevious()">
+      Anterior
+    </button>
+
+    <button mat-stroked-button type="button" [disabled]="!hasNext" (click)="onNext()">
+      Siguiente
+    </button>
+  </div>
+</div>

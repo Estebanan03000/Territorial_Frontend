@@ -1,0 +1,12 @@
+<div class="page-container">
+  <div *ngIf="loading">
+    Cargando comuna...
+  </div>
+
+  <app-commune-form
+    *ngIf="!loading && commune"
+    [commune]="commune"
+    (formSubmit)="updateCommune($event)"
+    (cancel)="cancel()">
+  </app-commune-form>
+</div>

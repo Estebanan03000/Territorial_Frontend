@@ -58,6 +58,12 @@ export const routes: Routes = [
         loadChildren: () =>
           import('./pages/officials/officials.routes').then((m) => m.OfficialsRoutes),
       },
+      {
+        path: 'communes',
+        canActivateChild: [AuthenticatedGuard],
+        loadChildren: () =>
+          import('./pages/communes/communes.routes').then((m) => m.CommunesRoutes),
+      },
     ],
   },
   {

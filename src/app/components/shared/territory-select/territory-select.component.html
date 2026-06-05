@@ -1,0 +1,23 @@
+<form [formGroup]="form" class="territory-select">
+  <mat-form-field appearance="outline">
+    <mat-label>Departamento</mat-label>
+    <mat-select formControlName="id_department" (selectionChange)="onDepartmentChange()">
+      <mat-option value="">Todos</mat-option>
+
+      <mat-option *ngFor="let department of departments" [value]="department.id_department">
+        {{ department.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Ciudad</mat-label>
+    <mat-select formControlName="id_city" (selectionChange)="onCityChange()">
+      <mat-option value="">Todas</mat-option>
+
+      <mat-option *ngFor="let city of filteredCities" [value]="city.id_city">
+        {{ city.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>
