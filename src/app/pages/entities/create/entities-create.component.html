@@ -1,0 +1,14 @@
+<div class="card">
+  <div class="card-body">
+
+    <h3>Crear Entidad</h3>
+
+    <app-entity-form
+      [loading]="loading"
+      buttonText="Crear entidad"
+      (formSubmit)="onCreate($event)"
+      (cancel)="onCancel()">
+    </app-entity-form>
+
+  </div>
+</div>

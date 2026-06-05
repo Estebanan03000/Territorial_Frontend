@@ -68,7 +68,7 @@ export class ListComponent implements OnInit {
         this.totalPages = response.totalPages;
         this.loading = false;
       },
-      error: (error) => {
+      error: (error: any) => {
         this.officials = [];
         this.loading = false;
 
@@ -106,7 +106,7 @@ export class ListComponent implements OnInit {
             Swal.fire('Eliminado', 'El funcionario fue eliminado correctamente.', 'success');
             this.loadOfficials();
           },
-          error: (error) => {
+          error: (error: any) => {
             Swal.fire('Error', this.getErrorMessage(error), 'error');
           },
         });
@@ -123,18 +123,38 @@ export class ListComponent implements OnInit {
   }
 
   changeStatus(official: Official, status: string): void {
+
     if (!official.id_official) {
       return;
     }
 
-    this.officialsService.changeStatus(official, status).subscribe({
+    this.officialsService.update(
+      official.id_official,
+      {
+        ...official,
+        status
+      }
+    ).subscribe({
+
       next: () => {
-        Swal.fire('Actualizado', 'El estado del funcionario fue actualizado.', 'success');
+
+        Swal.fire(
+          'Actualizado',
+          'El estado del funcionario fue actualizado.',
+          'success'
+        );
+
         this.loadOfficials();
       },
-      error: (error) => {
-        Swal.fire('Error', this.getErrorMessage(error), 'error');
-      },
+
+      error: (error: any) => {
+
+        Swal.fire(
+          'Error',
+          this.getErrorMessage(error),
+          'error'
+        );
+      }
     });
   }
 
@@ -148,7 +168,7 @@ export class ListComponent implements OnInit {
         Swal.fire('Actualizado', 'El seguimiento GPS fue activado.', 'success');
         this.loadOfficials();
       },
-      error: (error) => {
+      error: (error: any) => {
         Swal.fire('Error', this.getErrorMessage(error), 'error');
       },
     });
@@ -164,7 +184,7 @@ export class ListComponent implements OnInit {
         Swal.fire('Actualizado', 'El seguimiento GPS fue detenido.', 'success');
         this.loadOfficials();
       },
-      error: (error) => {
+      error: (error: any) => {
         Swal.fire('Error', this.getErrorMessage(error), 'error');
       },
     });

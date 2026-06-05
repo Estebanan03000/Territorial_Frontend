@@ -1,3 +1,5 @@
+import { SearchParams } from './api-response';
+
 export interface Official {
   id_official?: number;
   id_entity?: number;
@@ -22,7 +24,8 @@ export interface OfficialPayload {
   gps_active: boolean;
 }
 
-export interface OfficialFilters {
+export interface OfficialFilters extends SearchParams {
+  [key: string]: string | number | undefined;
   q?: string;
   id_entity?: number;
   status?: string;

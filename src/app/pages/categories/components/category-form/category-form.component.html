@@ -1,0 +1,153 @@
+<div class="category-card">
+
+  <div class="form-title">
+    <h2>
+      {{ form.get('id_parent_category')?.value ? 'Subcategoría' : 'Categoría' }}
+    </h2>
+
+    <p>
+      Complete la información de la categoría.
+    </p>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+
+    <div class="form-grid">
+
+      <div class="form-group">
+        <label>Nombre *</label>
+
+        <input
+          class="form-input"
+          type="text"
+          formControlName="name">
+
+        @if(form.get('name')?.invalid && form.get('name')?.touched){
+
+          <span class="error-text">
+            El nombre es obligatorio
+          </span>
+
+        }
+      </div>
+
+      <div class="form-group">
+        <label>Categoría Padre</label>
+
+        <select
+          class="form-input"
+          formControlName="id_parent_category">
+
+          <option [ngValue]="null">
+            Ninguna
+          </option>
+
+          @for(category of categories; track category.id_category){
+
+            <option [ngValue]="category.id_category">
+              {{ category.name }}
+            </option>
+
+          }
+
+        </select>
+
+      </div>
+
+      <div class="form-group full-width">
+        <label>Descripción</label>
+
+        <textarea
+          rows="4"
+          class="form-input"
+          formControlName="description">
+        </textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Estado</label>
+
+        <select
+          class="form-input"
+          formControlName="status">
+
+          <option value="Activo">
+            Activo
+          </option>
+
+          <option value="Inactivo">
+            Inactivo
+          </option>
+
+        </select>
+
+      </div>
+
+      <div class="form-group">
+        <label>Imagen</label>
+
+        <input
+          class="form-input"
+          type="file"
+          accept="image/*"
+          (change)="onFileSelected($event)">
+
+      </div>
+
+      @if(currentImageUrl){
+
+        <div class="form-group full-width">
+
+          <label>Imagen actual</label>
+
+          <img
+            [src]="currentImageUrl"
+            alt="Imagen actual"
+            class="preview-image">
+
+        </div>
+
+      }
+
+      @if(previewUrl){
+
+        <div class="form-group full-width">
+
+          <label>Vista previa</label>
+
+          <img
+            [src]="previewUrl"
+            alt="Vista previa"
+            class="preview-image">
+
+        </div>
+
+      }
+
+    </div>
+
+    <div class="actions">
+
+      <button
+        type="button"
+        class="btn-secondary"
+        (click)="onCancel()">
+
+        Cancelar
+
+      </button>
+
+      <button
+        type="submit"
+        class="btn-primary"
+        [disabled]="loading">
+
+        {{ loading ? 'Guardando...' : buttonText }}
+
+      </button>
+
+    </div>
+
+  </form>
+
+</div>

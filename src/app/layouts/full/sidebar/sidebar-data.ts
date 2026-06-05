@@ -14,7 +14,26 @@ export const navItems: NavItem[] = [
     iconName: 'solar:users-group-rounded-line-duotone',
     route: '/citizens/list',
   },
-  
+  {
+    displayName: 'Funcionarios',
+    iconName: 'solar:user-id-line-duotone',
+    route: '/officials',
+  },
+  {
+    displayName: 'Entidades',
+    iconName: 'solar:buildings-3-line-duotone',
+    route: '/entities/list',
+  },
+  {
+    displayName: 'Categorías',
+    iconName: 'solar:widget-2-line-duotone',
+    route: '/categories/list',
+  },
+  {
+    displayName: 'Barrios',
+    iconName: 'solar:home-2-line-duotone',
+    route: '/neighborhoods/list',
+  },
   {
     navCap: 'Ui Components',
   },
