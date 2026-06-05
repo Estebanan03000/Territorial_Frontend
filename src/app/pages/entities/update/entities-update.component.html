@@ -1,0 +1,19 @@
+<div class="card">
+  <div class="card-body">
+
+    <h3>Actualizar Entidad</h3>
+
+    @if(entity){
+
+      <app-entity-form
+        [entity]="entity"
+        [loading]="loading"
+        buttonText="Actualizar entidad"
+        (formSubmit)="onUpdate($event)"
+        (cancel)="onCancel()">
+      </app-entity-form>
+
+    }
+
+  </div>
+</div>

@@ -1,0 +1,166 @@
+<div class="entity-card">
+
+  <div class="form-title">
+    <h2>Entidad</h2>
+    <p>Ingrese la información de la entidad.</p>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+
+    <div class="form-grid">
+
+      <div class="form-group">
+        <label>Nombre *</label>
+
+        <input
+          class="form-input"
+          type="text"
+          formControlName="name">
+
+        @if(form.get('name')?.invalid && form.get('name')?.touched){
+          <span class="error-text">
+            El nombre es obligatorio
+          </span>
+        }
+      </div>
+
+      <div class="form-group">
+        <label>NIT</label>
+
+        <input
+          class="form-input"
+          type="text"
+          formControlName="nit">
+
+        @if(form.get('nit')?.invalid && form.get('nit')?.touched){
+          <span class="error-text">
+            El NIT solo puede contener números
+          </span>
+        }
+      </div>
+
+      <div class="form-group">
+        <label>Correo</label>
+
+        <input
+          class="form-input"
+          type="email"
+          formControlName="email">
+
+        @if(form.get('email')?.invalid && form.get('email')?.touched){
+          <span class="error-text">
+            Ingrese un correo válido
+          </span>
+        }
+      </div>
+
+      <div class="form-group">
+        <label>Teléfono</label>
+
+        <input
+          class="form-input"
+          type="text"
+          formControlName="phone">
+
+        @if(form.get('phone')?.invalid && form.get('phone')?.touched){
+          <span class="error-text">
+            Solo se permiten números (7 a 15 dígitos)
+          </span>
+        }
+      </div>
+
+      <div class="form-group full-width">
+        <label>Dirección</label>
+
+        <input
+          class="form-input"
+          type="text"
+          formControlName="address">
+      </div>
+
+      <div class="form-group">
+        <label>Estado</label>
+
+        <select
+          class="form-input"
+          formControlName="status">
+
+          <option value="Activo">Activo</option>
+          <option value="Inactivo">Inactivo</option>
+
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Logo</label>
+
+        <input
+          class="form-input"
+          type="file"
+          accept="image/*"
+          (change)="onFileSelected($event)">
+
+        @if(currentLogoUrl){
+
+          <div style="margin-top:15px">
+
+            <img
+              [src]="currentLogoUrl"
+              alt="Logo entidad"
+              style="
+                width:140px;
+                height:140px;
+                object-fit:cover;
+                border-radius:12px;
+                border:1px solid #ddd;
+                padding:4px;
+                background:white;
+              ">
+
+          </div>
+
+        }
+
+        @if(previewUrl){
+
+          <div style="margin-top:15px">
+
+            <img
+              [src]="previewUrl"
+              alt="Preview"
+              style="
+                width:120px;
+                height:120px;
+                object-fit:cover;
+                border-radius:12px;
+                border:1px solid #ddd;
+              ">
+
+          </div>
+
+        }
+
+      </div>
+
+    <div class="actions">
+
+      <button
+        type="button"
+        class="btn-secondary"
+        (click)="onCancel()">
+
+        Cancelar
+      </button>
+
+      <button
+        type="submit"
+        class="btn-primary">
+
+        {{ buttonText }}
+      </button>
+
+    </div>
+    </div>
+  </form>
+
+</div>

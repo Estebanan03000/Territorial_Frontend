@@ -1,0 +1,47 @@
+.categories-container {
+  padding: 24px;
+}
+
+.header-card {
+  background: white;
+  border-radius: 18px;
+  padding: 24px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 18px rgba(0,0,0,.08);
+  margin-bottom: 24px;
+}
+
+.header-info {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.icon-circle {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: #eef4ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+}
+
+.create-btn {
+  background: #2563eb;
+  color: white;
+  text-decoration: none;
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.table-card {
+  background: white;
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow: 0 4px 18px rgba(0,0,0,.08);
+}

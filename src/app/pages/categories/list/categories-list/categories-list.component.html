@@ -1,0 +1,52 @@
+<div class="categories-container">
+
+  <div class="header-card">
+
+    <div class="header-info">
+
+      <div class="icon-circle">
+        🗂️
+      </div>
+
+      <div>
+
+        <h1>
+          Categorías
+        </h1>
+
+        <p>
+          Administra categorías y subcategorías.
+        </p>
+
+      </div>
+
+    </div>
+
+    <a
+      routerLink="/categories/create"
+      class="create-btn">
+
+      + Nueva Categoría
+
+    </a>
+
+  </div>
+
+  <div class="table-card">
+
+    <app-dynamic-table
+      [data]="categories"
+      [columns]="columns"
+      [actions]="actions"
+      [loading]="loading"
+      [page]="page"
+      [pageSize]="pageSize"
+      [totalItems]="total"
+      [totalPages]="totalPages"
+      (pageChange)="onPageChange($event)"
+      (action)="onTableAction($event)">
+    </app-dynamic-table>
+
+  </div>
+
+</div>

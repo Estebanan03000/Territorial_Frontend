@@ -1,0 +1,11 @@
+<div class="page-card">
+  <h2>Crear Categoría</h2>
+
+  <app-category-form
+    [categories]="categories"
+    [loading]="loading"
+    buttonText="Crear categoría"
+    (formSubmit)="onCreate($event)"
+    (cancel)="onCancel()">
+  </app-category-form>
+</div>

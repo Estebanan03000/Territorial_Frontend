@@ -1,0 +1,20 @@
+@if(category){
+
+<div class="page-card">
+
+  <h2>
+    Editar Categoría
+  </h2>
+
+  <app-category-form
+    [category]="category"
+    [categories]="categories"
+    [loading]="loading"
+    buttonText="Actualizar categoría"
+    (formSubmit)="onUpdate($event)"
+    (cancel)="onCancel()">
+  </app-category-form>
+
+</div>
+
+}

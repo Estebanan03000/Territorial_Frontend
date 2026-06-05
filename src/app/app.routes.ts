@@ -43,7 +43,7 @@ export const routes: Routes = [
       },
       {
         path: 'citizens',
-        canActivateChild: [AuthenticatedGuard],
+        //canActivateChild: [AuthenticatedGuard],
         children: [
           {
             path: '',
@@ -54,9 +54,25 @@ export const routes: Routes = [
       },
       {
         path: 'officials',
-        canActivateChild: [AuthenticatedGuard],
+        //canActivateChild: [AuthenticatedGuard],
         loadChildren: () =>
           import('./pages/officials/officials.routes').then((m) => m.OfficialsRoutes),
+      },
+      {
+        path: 'entities',
+        //canActivateChild: [AuthenticatedGuard],
+        loadChildren: () =>
+          import('./pages/entities/entities.route').then(
+            (m) => m.EntitiesRoutes
+          ),
+      },
+      {
+        path: 'categories',
+        //canActivateChild: [AuthenticatedGuard],
+        loadChildren: () =>
+          import('./pages/categories/categories.routes').then(
+            (m) => m.CategoriesRoutes
+          ),
       },
     ],
   },

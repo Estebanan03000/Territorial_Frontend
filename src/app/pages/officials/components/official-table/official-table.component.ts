@@ -24,8 +24,16 @@ export class OfficialTableComponent {
   @Output() startTrackingOfficial = new EventEmitter<Official>();
   @Output() stopTrackingOfficial = new EventEmitter<Official>();
 
-  getEntityName(idEntity: number): string {
-    const entity = this.entities.find((item) => item.id_entity === idEntity);
+  getEntityName(idEntity?: number): string {
+
+    if (!idEntity) {
+      return 'Sin entidad';
+    }
+
+    const entity = this.entities.find(
+      (item) => item.id_entity === idEntity
+    );
+
     return entity ? entity.name : 'Sin entidad';
   }
 
