@@ -15,6 +15,8 @@ import { RouterModule } from '@angular/router';
 import { SecurityService } from 'src/app/services/security.service';
 import { User } from 'src/app/models/user';
 import { Subscription } from 'rxjs';
+import { LogoutButtonComponent } from 'src/app/components/shared/logout-button/logout-button.component';
+
 
 import { FormsModule } from '@angular/forms';
 import { NgScrollbarModule } from 'ngx-scrollbar';
@@ -42,7 +44,8 @@ interface profiledd {
     RouterModule,
     NgScrollbarModule,
     TablerIconsModule,
-    MaterialModule
+    MaterialModule,
+    LogoutButtonComponent,
   ],
   templateUrl: './header.component.html',
   encapsulation: ViewEncapsulation.None

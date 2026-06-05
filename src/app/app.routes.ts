@@ -87,7 +87,7 @@ export const routes: Routes = [
       },
       {
         path: 'communes',
-        canActivateChild: [AuthenticatedGuard],
+        //canActivateChild: [AuthenticatedGuard],
         loadChildren: () =>
           import('./pages/communes/communes.routes').then((m) => m.CommunesRoutes),
       },

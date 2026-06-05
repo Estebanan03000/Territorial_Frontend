@@ -1,0 +1,22 @@
+<mat-card class="session-card">
+  <mat-card-header>
+    <mat-card-title>Sesión activa</mat-card-title>
+    <mat-card-subtitle>Usuario autenticado</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div *ngIf="user; else noUser" class="session-data">
+      <p><strong>Nombre:</strong> {{ user.name || 'Sin nombre' }}</p>
+      <p><strong>Correo:</strong> {{ user.email || 'Sin correo' }}</p>
+      <p><strong>Usuario:</strong> {{ user.username || 'Sin usuario' }}</p>
+    </div>
+
+    <ng-template #noUser>
+      <p class="empty-message">No hay información de usuario cargada.</p>
+    </ng-template>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <app-logout-button [fullWidth]="true"></app-logout-button>
+  </mat-card-actions>
+</mat-card>

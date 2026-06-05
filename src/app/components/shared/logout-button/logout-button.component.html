@@ -1,0 +1,11 @@
+<app-confirm-action-button
+  [label]="label"
+  title="Cerrar sesión"
+  text="Se cerrará la sesión actual y volverá al login."
+  confirmButtonText="Cerrar sesión"
+  cancelButtonText="Cancelar"
+  icon="warning"
+  [color]="color"
+  [fullWidth]="fullWidth"
+  (confirmed)="logout()">
+</app-confirm-action-button>

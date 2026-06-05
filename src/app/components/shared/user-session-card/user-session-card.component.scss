@@ -1,0 +1,21 @@
+.session-card {
+  max-width: 420px;
+}
+
+.session-data {
+  display: grid;
+  gap: 8px;
+}
+
+.session-data p {
+  margin: 0;
+}
+
+.empty-message {
+  margin: 0;
+  color: #6b7280;
+}
+
+mat-card-actions {
+  padding: 16px;
+}
