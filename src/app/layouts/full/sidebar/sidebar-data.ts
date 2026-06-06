@@ -35,6 +35,11 @@ export const navItems: NavItem[] = [
     route: '/neighborhoods/list',
   },
   {
+    displayName: 'Demarcación',
+    iconName: 'solar:map-point-wave-line-duotone',
+    route: '/neighborhoods/demarcation',
+  },
+  {
     navCap: 'Ui Components',
   },
   {

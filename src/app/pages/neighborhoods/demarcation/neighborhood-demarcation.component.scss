@@ -1,0 +1,48 @@
+.map-container {
+  height: 650px;
+  width: 100%;
+}
+
+.neighborhood-list {
+  max-height: 520px;
+  overflow-y: auto;
+}
+
+.neighborhood-item {
+  width: 100%;
+  text-align: left;
+  padding: 12px;
+  border-bottom: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+.neighborhood-item:hover {
+  background-color: #f8fafc;
+}
+
+.neighborhood-item.active {
+  border: 2px solid #2563eb;
+  background-color: #eff6ff;
+  color: #1d4ed8;
+}
+
+.selected-card {
+  background-color: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.coordinates-table {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+:host ::ng-deep .point-label {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 999px;
+  font-weight: 700;
+  padding: 2px 6px;
+}
