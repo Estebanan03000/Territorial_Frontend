@@ -4,6 +4,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ConfirmActionButtonComponent } from '../confirm-action-button/confirm-action-button.component';
 import { SessionControlService } from '../../../services/session-control.service';
 
+import { signOut } from 'firebase/auth';
+import { firebaseAuth } from 'src/app/firebase.config';
+
 @Component({
   selector: 'app-logout-button',
   standalone: true,
@@ -20,7 +23,16 @@ export class LogoutButtonComponent {
 
   constructor(private sessionControlService: SessionControlService) {}
 
-  logout(): void {
+  async logout(): Promise<void> {
+    try {
+      await signOut(firebaseAuth);
+
+      localStorage.removeItem('google_token');
+      localStorage.removeItem('github_token');
+    } catch (error) {
+      console.error('Error cerrando sesión Firebase:', error);
+    }
+
     this.sessionControlService.closeSession();
     this.logoutDone.emit();
   }

@@ -7,7 +7,7 @@ import {
 } from '@angular/router';
 
 import { of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import { SecurityService } from '../services/security.service';
 
 @Injectable({
@@ -20,32 +20,42 @@ export class NoAuthenticatedGuard implements CanActivateChild {
     private router: Router
   ) {}
 
-  canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+  canActivateChild(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ) {
 
-    console.log('🔓 Verificando NO autenticación para ruta:', state.url);
-
-    return this.securityService.me().pipe(
-
-      tap((user) => this.securityService.setUser(user)),
-
-      map((user) => {
-
-        // SI HAY SESIÓN
-        if (user) {
-          return this.router.createUrlTree(['/dashboard']);
-        }
-
-        // SI NO HAY SESIÓN
-        return true;
-      }),
-
-      catchError(() => {
-
-        // normalmente 401 = no autenticado
-        this.securityService.clearUser();
-
-        return of(true);
-      })
+    console.log(
+      '🔓 Verificando NO autenticación para ruta:',
+      state.url
     );
+
+    const googleToken =
+      localStorage.getItem('google_token');
+
+    const githubToken =
+      localStorage.getItem('github_token');
+
+    if (googleToken || githubToken) {
+      return of(
+        this.router.createUrlTree(['/dashboard'])
+      );
+    }
+
+    return this.securityService
+      .getCurrentUser()
+      .pipe(
+        take(1),
+        map((user) => {
+
+          if (user) {
+            return this.router.createUrlTree(
+              ['/dashboard']
+            );
+          }
+
+          return true;
+        })
+      );
   }
 }

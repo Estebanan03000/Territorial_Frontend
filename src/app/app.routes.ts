@@ -43,7 +43,7 @@ export const routes: Routes = [
       },
       {
         path: 'citizens',
-        //canActivateChild: [AuthenticatedGuard],
+        canActivateChild: [AuthenticatedGuard],
         children: [
           {
             path: '',
@@ -54,7 +54,7 @@ export const routes: Routes = [
       },
       {
         path: 'neighborhoods',
-        //canActivateChild: [AuthenticatedGuard],
+        canActivateChild: [AuthenticatedGuard],
         children: [
           {
             path: '',
@@ -65,13 +65,13 @@ export const routes: Routes = [
       },
       {
         path: 'officials',
-        //canActivateChild: [AuthenticatedGuard],
+        canActivateChild: [AuthenticatedGuard],
         loadChildren: () =>
           import('./pages/officials/officials.routes').then((m) => m.OfficialsRoutes),
       },
       {
         path: 'entities',
-        //canActivateChild: [AuthenticatedGuard],
+        canActivateChild: [AuthenticatedGuard],
         loadChildren: () =>
           import('./pages/entities/entities.route').then(
             (m) => m.EntitiesRoutes
@@ -79,7 +79,7 @@ export const routes: Routes = [
       },
       {
         path: 'categories',
-        //canActivateChild: [AuthenticatedGuard],
+        canActivateChild: [AuthenticatedGuard],
         loadChildren: () =>
           import('./pages/categories/categories.routes').then(
             (m) => m.CategoriesRoutes
@@ -87,7 +87,7 @@ export const routes: Routes = [
       },
       {
         path: 'communes',
-        //canActivateChild: [AuthenticatedGuard],
+        canActivateChild: [AuthenticatedGuard],
         loadChildren: () =>
           import('./pages/communes/communes.routes').then((m) => m.CommunesRoutes),
       },
