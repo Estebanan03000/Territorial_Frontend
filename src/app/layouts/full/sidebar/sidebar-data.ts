@@ -30,6 +30,11 @@ export const navItems: NavItem[] = [
     route: '/categories/list',
   },
   {
+    displayName: 'Comunas',
+    iconName: 'building-community',
+    route: '/communes',
+  },
+  {
     displayName: 'Barrios',
     iconName: 'solar:home-2-line-duotone',
     route: '/neighborhoods/list',
