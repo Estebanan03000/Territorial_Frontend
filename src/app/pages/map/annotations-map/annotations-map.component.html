@@ -1,0 +1,65 @@
+<div class="page-header">
+  <div>
+    <h1>Mapa de anotaciones</h1>
+    <p>Explora y consulta las anotaciones ciudadanas en el territorio.</p>
+  </div>
+
+  <button mat-stroked-button type="button">Guía de uso</button>
+</div>
+
+<app-annotation-map-toolbar
+  [communes]="communes"
+  [neighborhoods]="neighborhoods"
+  [categoryIds]="selectedCategoryIds"
+  [viewMode]="viewMode"
+  (filtersChange)="applyFilters($event)"
+  (refresh)="loadData()">
+</app-annotation-map-toolbar>
+
+<div class="loading-box" *ngIf="loading">
+  Cargando mapa de anotaciones...
+</div>
+
+<div class="map-layout" *ngIf="!loading">
+  <section class="map-section">
+    <app-annotations-map
+      [items]="filteredItems"
+      [selectedItem]="selectedItem"
+      [viewMode]="viewMode"
+      [points]="points"
+      [selectedNeighborhoodId]="selectedNeighborhoodId"
+      (annotationSelected)="selectAnnotation($event)">
+    </app-annotations-map>
+
+    <div class="legend-position">
+      <app-annotation-map-legend [categories]="categories"></app-annotation-map-legend>
+    </div>
+
+    <div class="summary-position">
+      <app-annotation-map-summary
+        [totalAnnotations]="items.length"
+        [visibleAnnotations]="filteredItems.length"
+        [selectedCategories]="selectedCategoryIds.length"
+        [viewMode]="viewMode">
+      </app-annotation-map-summary>
+    </div>
+  </section>
+
+  <aside class="filter-section">
+    <app-annotation-category-filter
+      [categories]="categories"
+      [annotationCategories]="annotationCategories"
+      [selectedCategoryIds]="selectedCategoryIds"
+      (selectedCategoryIdsChange)="updateSelectedCategories($event)">
+    </app-annotation-category-filter>
+  </aside>
+
+  <aside class="detail-section">
+    <app-annotation-detail-panel
+      [item]="selectedItem"
+      (closePanel)="selectedItem = undefined"
+      (locate)="locateAnnotation($event)"
+      (saveVote)="saveVote($event)">
+    </app-annotation-detail-panel>
+  </aside>
+</div>

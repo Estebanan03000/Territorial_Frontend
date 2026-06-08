@@ -1,0 +1,16 @@
+<div class="stars" (mouseleave)="clearHover()">
+  <button
+    *ngFor="let star of stars"
+    type="button"
+    class="star-button"
+    [class.active]="isActive(star)"
+    [disabled]="readonly"
+    (mouseenter)="setHover(star)"
+    (click)="setRating(star)">
+    ★
+  </button>
+
+  <span class="rating-number" *ngIf="showNumber">
+    {{ rating | number:'1.1-1' }}
+  </span>
+</div>

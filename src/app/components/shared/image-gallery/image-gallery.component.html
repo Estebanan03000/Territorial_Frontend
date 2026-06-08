@@ -1,0 +1,13 @@
+<div class="gallery" *ngIf="evidences.length > 0; else emptyGallery">
+  <div class="image-box" *ngFor="let evidence of visibleEvidences">
+    <img [src]="getFileUrl(evidence)" alt="Evidencia de la anotación">
+  </div>
+
+  <div class="image-box extra" *ngIf="extraCount > 0">
+    +{{ extraCount }}<br>ver más
+  </div>
+</div>
+
+<ng-template #emptyGallery>
+  <p class="empty-gallery">Sin evidencias registradas.</p>
+</ng-template>

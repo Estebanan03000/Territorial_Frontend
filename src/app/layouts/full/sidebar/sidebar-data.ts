@@ -25,11 +25,6 @@ export const navItems: NavItem[] = [
     route: '/entities/list',
   },
   {
-    displayName: 'Mapa',
-    iconName: 'map',
-    route: '/map',
-  },
-  {
     displayName: 'Categorías',
     iconName: 'solar:widget-2-line-duotone',
     route: '/categories/list',
@@ -48,6 +43,23 @@ export const navItems: NavItem[] = [
     displayName: 'Demarcación',
     iconName: 'solar:map-point-wave-line-duotone',
     route: '/neighborhoods/demarcation',
+  },
+  {
+    displayName: 'Mapa',
+    iconName: 'solar:map-point-wave-line-duotone',
+    route: '/map',
+    children: [
+      {
+        displayName: 'Seguimiento',
+        iconName: 'tabler:point',
+        route: '/map/tracking',
+      },
+      {
+        displayName: 'Anotaciones',
+        iconName: 'tabler:point',
+        route: '/map/annotations',
+      },
+    ],
   },
   {
     navCap: 'Ui Components',

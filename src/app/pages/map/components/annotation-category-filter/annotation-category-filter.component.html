@@ -1,0 +1,34 @@
+<mat-card class="filter-card">
+  <mat-card-header>
+    <div class="filter-header">
+      <div>
+        <mat-card-title>Filtros</mat-card-title>
+        <mat-card-subtitle>Categorías y subcategorías</mat-card-subtitle>
+      </div>
+
+      <button mat-button type="button" (click)="clear()">Limpiar</button>
+    </div>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="category-group" *ngFor="let parent of parentCategories">
+      <label class="category-line parent-line">
+        <input
+          type="checkbox"
+          [checked]="isSelected(parent)"
+          (change)="toggleCategory(parent)">
+        <span>{{ parent.name }}</span>
+        <strong>{{ getCount(parent) }}</strong>
+      </label>
+
+      <label class="category-line child-line" *ngFor="let child of getChildren(parent)">
+        <input
+          type="checkbox"
+          [checked]="isSelected(child)"
+          (change)="toggleCategory(child)">
+        <span>{{ child.name }}</span>
+        <strong>{{ getCount(child) }}</strong>
+      </label>
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,67 @@
+<mat-card class="detail-card" *ngIf="item; else emptyDetail">
+  <mat-card-header>
+    <div class="detail-header">
+      <div>
+        <span class="category-pill">{{ categoryName }}</span>
+        <mat-card-title>{{ subcategoryName }}</mat-card-title>
+        <mat-card-subtitle>{{ placeText }}</mat-card-subtitle>
+      </div>
+
+      <button mat-button type="button" (click)="closePanel.emit()">Cerrar</button>
+    </div>
+  </mat-card-header>
+
+  <mat-card-content>
+    <p class="description">{{ item.annotation.description }}</p>
+
+    <section>
+      <h3>Información</h3>
+      <div class="info-line"><span>Categoría</span><strong>{{ categoryName }}</strong></div>
+      <div class="info-line"><span>Subcategoría</span><strong>{{ subcategoryName }}</strong></div>
+      <div class="info-line"><span>Fecha de registro</span><strong>{{ dateText }}</strong></div>
+      <div class="info-line"><span>Anotado por</span><strong>{{ citizenName }}</strong></div>
+    </section>
+
+    <section>
+      <h3>Evidencias</h3>
+      <app-image-gallery [evidences]="item.evidences"></app-image-gallery>
+    </section>
+
+    <section>
+      <h3>Calificación promedio</h3>
+      <app-star-rating [rating]="item.averageRating" [readonly]="true" [showNumber]="true"></app-star-rating>
+      <p class="votes-count">{{ item.voteCount }} calificación(es)</p>
+
+      <div class="rating-line" *ngFor="let value of [5,4,3,2,1]">
+        <span>{{ value }}★</span>
+        <div class="bar"><i [style.width.%]="getRatingPercent(value)"></i></div>
+        <strong>{{ getRatingCount(value) }}</strong>
+      </div>
+    </section>
+
+    <section>
+      <h3>Tu calificación</h3>
+      <app-star-rating [rating]="stars" [readonly]="false" (ratingChange)="stars = $event"></app-star-rating>
+
+      <textarea
+        matInput
+        rows="3"
+        [(ngModel)]="comment"
+        placeholder="Comentario">
+      </textarea>
+
+      <div class="actions">
+        <button mat-stroked-button type="button" (click)="onLocate()">Ver en el mapa</button>
+        <button mat-flat-button color="primary" type="button" [disabled]="stars < 1" (click)="onSaveVote()">Guardar</button>
+      </div>
+    </section>
+  </mat-card-content>
+</mat-card>
+
+<ng-template #emptyDetail>
+  <mat-card class="detail-card empty">
+    <mat-card-content>
+      Selecciona una anotación en el mapa.
+    </mat-card-content>
+  </mat-card>
+</ng-template>

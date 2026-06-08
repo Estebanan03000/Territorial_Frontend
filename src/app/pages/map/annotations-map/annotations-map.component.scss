@@ -1,0 +1,71 @@
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.page-header h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.page-header p {
+  margin: 4px 0 0;
+  color: #64748b;
+}
+
+.loading-box {
+  padding: 30px;
+  text-align: center;
+  color: #64748b;
+  background-color: white;
+  border-radius: 14px;
+}
+
+.map-layout {
+  display: grid;
+  grid-template-columns: minmax(520px, 1fr) 270px 310px;
+  gap: 12px;
+  height: calc(100vh - 210px);
+  min-height: 640px;
+}
+
+.map-section {
+  position: relative;
+  min-width: 0;
+}
+
+.filter-section,
+.detail-section {
+  min-height: 0;
+}
+
+.legend-position {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  z-index: 700;
+}
+
+.summary-position {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  z-index: 700;
+  width: 260px;
+}
+
+@media (max-width: 1300px) {
+  .map-layout {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .filter-section,
+  .detail-section {
+    height: auto;
+  }
+}

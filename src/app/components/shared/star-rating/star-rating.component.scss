@@ -1,0 +1,30 @@
+.stars {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.star-button {
+  border: 0;
+  background: transparent;
+  color: #cbd5e1;
+  cursor: pointer;
+  font-size: 22px;
+  line-height: 1;
+  padding: 0 2px;
+}
+
+.star-button.active {
+  color: #f59e0b;
+}
+
+.star-button:disabled {
+  cursor: default;
+}
+
+.rating-number {
+  margin-left: 6px;
+  color: #475569;
+  font-size: 13px;
+  font-weight: 600;
+}

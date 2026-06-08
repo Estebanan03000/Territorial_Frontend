@@ -1,0 +1,20 @@
+<mat-card class="summary-card">
+  <mat-card-content>
+    <div class="summary-row">
+      <span>Mostrando</span>
+      <strong>{{ visibleAnnotations }}</strong>
+      <span>de {{ totalAnnotations }} anotaciones</span>
+    </div>
+
+    <div class="summary-row small">
+      <span>Filtros aplicados:</span>
+      <strong>{{ selectedCategories }}</strong>
+      <span>categoría(s)</span>
+    </div>
+
+    <div class="summary-row small">
+      <span>Vista:</span>
+      <strong>{{ viewMode === 'markers' ? 'Marcadores' : 'Mapa de calor' }}</strong>
+    </div>
+  </mat-card-content>
+</mat-card>

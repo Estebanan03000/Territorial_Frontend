@@ -1,0 +1,20 @@
+.summary-card {
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
+}
+
+.summary-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #475569;
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+.summary-row strong {
+  color: #0f172a;
+}
+
+.summary-row.small {
+  font-size: 12px;
+}
