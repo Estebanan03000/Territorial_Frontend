@@ -1,0 +1,13 @@
+<div class="filter-box">
+  <label for="entity-filter">Filtrar por entidad</label>
+
+  <select
+    id="entity-filter"
+    [(ngModel)]="selectedEntityId"
+    (change)="onEntityChange()">
+    <option value="">Todas las entidades</option>
+    <option *ngFor="let entity of entities" [value]="entity.id_entity">
+      {{ entity.name }}
+    </option>
+  </select>
+</div>

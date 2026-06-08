@@ -1,0 +1,52 @@
+<div class="panel">
+  <div class="panel-header">
+    <h2>Funcionarios ({{ officials.length }})</h2>
+  </div>
+
+  <div class="search-box">
+    <input
+      type="text"
+      placeholder="Buscar funcionario..."
+      [(ngModel)]="searchText"
+      (input)="onSearchChange()">
+  </div>
+
+  <div class="loading" *ngIf="loading">
+    Cargando funcionarios...
+  </div>
+
+  <div class="empty" *ngIf="!loading && officials.length === 0">
+    No hay funcionarios para mostrar.
+  </div>
+
+  <div class="official-list" *ngIf="!loading && officials.length > 0">
+    <button
+      type="button"
+      class="official-item"
+      [class.selected]="official.id_official === selectedOfficialId"
+      *ngFor="let official of officials"
+      (click)="onSelect(official)">
+      <span class="avatar" [ngClass]="getStatusClass(official)">
+        {{ getInitials(official.name) }}
+      </span>
+
+      <span class="official-info">
+        <strong>{{ official.name }}</strong>
+        <small>
+          <span class="status-dot" [ngClass]="getStatusClass(official)"></span>
+          {{ getStatusText(official) }}
+        </small>
+        <small>{{ official.role || 'Sin rol' }}</small>
+      </span>
+
+      <span class="official-time">
+        {{ getLastUpdate(official) }}
+      </span>
+    </button>
+  </div>
+
+  <div class="info-box">
+    <strong>Información</strong>
+    <p>Las ubicaciones se actualizan cada 15 segundos. La precisión puede variar según conexión y dispositivo.</p>
+  </div>
+</div>

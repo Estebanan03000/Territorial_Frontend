@@ -1,0 +1,63 @@
+.map-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 620px;
+  border-radius: 14px;
+  overflow: hidden;
+  background-color: #f3f4f6;
+}
+
+.map-container {
+  width: 100%;
+  height: 620px;
+}
+
+.map-empty {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  color: #4b5563;
+  font-size: 13px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
+  z-index: 500;
+}
+
+:host ::ng-deep .official-marker-container {
+  background: transparent;
+  border: none;
+}
+
+:host ::ng-deep .official-marker {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  background-color: #ffffff;
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.2);
+  border: 4px solid #9ca3af;
+  color: #111827;
+}
+
+:host ::ng-deep .official-marker.online {
+  border-color: #16a34a;
+}
+
+:host ::ng-deep .official-marker.offline {
+  border-color: #9ca3af;
+  filter: grayscale(1);
+}
+
+:host ::ng-deep .official-marker.last-known {
+  border-color: #2563eb;
+}
+
+:host ::ng-deep .official-marker.selected {
+  transform: scale(1.15);
+}

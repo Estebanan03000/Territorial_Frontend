@@ -25,6 +25,11 @@ export const navItems: NavItem[] = [
     route: '/entities/list',
   },
   {
+    displayName: 'Mapa',
+    iconName: 'map',
+    route: '/map',
+  },
+  {
     displayName: 'Categorías',
     iconName: 'solar:widget-2-line-duotone',
     route: '/categories/list',

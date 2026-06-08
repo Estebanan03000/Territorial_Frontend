@@ -1,0 +1,50 @@
+<div class="tracking-page">
+  <div class="page-header">
+    <div>
+      <div class="title-row">
+        <h1>Seguimiento en tiempo real</h1>
+        <span class="live-badge">En vivo</span>
+      </div>
+      <p>Visualiza la ubicación actual de los funcionarios activos.</p>
+    </div>
+
+    <div class="header-actions">
+      <span>Última actualización: {{ lastUpdateText }}</span>
+      <button type="button" (click)="refreshNow()">Actualizar</button>
+    </div>
+  </div>
+
+  <div class="top-grid">
+    <app-tracking-entity-filter
+      [entities]="entities"
+      (entityChange)="onEntityChange($event)">
+    </app-tracking-entity-filter>
+
+    <app-tracking-summary [summary]="summary"></app-tracking-summary>
+  </div>
+
+  <div class="tracking-layout">
+    <div class="map-area">
+      <app-officials-map
+        [officials]="filteredOfficials"
+        [selectedOfficialId]="selectedOfficial?.id_official"
+        (officialSelected)="onOfficialSelected($event)">
+      </app-officials-map>
+
+      <app-tracking-legend></app-tracking-legend>
+
+      <div class="map-actions">
+        <button type="button" (click)="startTracking()">Iniciar seguimiento</button>
+        <button type="button" (click)="stopTracking()">Detener seguimiento</button>
+      </div>
+    </div>
+
+    <app-official-tracking-list
+      [officials]="filteredOfficials"
+      [selectedOfficialId]="selectedOfficial?.id_official"
+      [loading]="loading"
+      (officialSelected)="onOfficialSelected($event)"
+      (searchChange)="onSearchChange($event)">
+    </app-official-tracking-list>
+  </div>
+</div>
