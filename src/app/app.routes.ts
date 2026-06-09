@@ -96,6 +96,12 @@ export const routes: Routes = [
         canActivateChild: [AuthenticatedGuard],
         loadChildren: () => import('./pages/map/map.routes').then((m) => m.MapRoutes),
       },
+      {
+        path: 'reports',
+        canActivateChild: [AuthenticatedGuard],
+        loadChildren: () =>
+          import('./pages/reports/reports.routes').then((m) => m.ReportsRoutes),
+      },
     ],
   },
   {

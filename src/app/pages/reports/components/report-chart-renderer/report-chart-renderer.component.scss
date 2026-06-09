@@ -1,0 +1,19 @@
+.format-button {
+  border: 1px solid #dbeafe;
+  border-radius: 8px;
+  padding: 8px 14px;
+  color: #475569;
+  background-color: #ffffff;
+}
+
+.format-button.active {
+  background-color: #eff6ff;
+  color: #2563eb;
+  border-color: #2563eb;
+  font-weight: 600;
+}
+
+.format-button:disabled:not(.active) {
+  opacity: 0.45;
+  cursor: not-allowed;
+}

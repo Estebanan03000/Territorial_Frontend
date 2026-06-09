@@ -1,0 +1,38 @@
+@if (report) {
+  <div class="border rounded-lg p-4">
+
+    <div class="mb-4">
+      <p class="text-sm text-gray-500">Consulta:</p>
+      <h2 class="font-semibold">{{ question }}</h2>
+    </div>
+
+    <div class="flex flex-wrap gap-3 mb-5">
+      @for (format of ['Barra simple', 'Barra agrupada', 'Circular', 'Líneas']; track format) {
+        <button
+          type="button"
+          class="format-button"
+          [class.active]="applies(format)"
+          [disabled]="!applies(format)">
+          {{ format }}
+        </button>
+      }
+
+      <span class="text-xs text-gray-500 flex items-center">
+        Solo se habilita el formato que aplica a esta consulta.
+      </span>
+    </div>
+
+    @if (report.type === 'pie') {
+      <app-report-pie-chart [report]="report"></app-report-pie-chart>
+    }
+
+    @if (report.type === 'bar') {
+      <app-report-bar-chart [report]="report"></app-report-bar-chart>
+    }
+
+    @if (report.type === 'line' || report.type === 'series') {
+    <app-report-line-chart [report]="report"></app-report-line-chart>
+    }
+
+  </div>
+}

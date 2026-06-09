@@ -45,6 +45,11 @@ export const navItems: NavItem[] = [
     route: '/neighborhoods/demarcation',
   },
   {
+    displayName: 'Reportes',
+    iconName: 'solar:clipboard-text-line-duotone',
+    route: '/reports',
+  },
+  {
     displayName: 'Mapa',
     iconName: 'solar:map-point-wave-line-duotone',
     route: '/map',

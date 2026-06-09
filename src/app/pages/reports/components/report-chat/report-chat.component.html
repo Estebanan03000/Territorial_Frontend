@@ -1,0 +1,68 @@
+<div class="chat-container">
+
+  <div class="messages mb-5">
+
+    @if (messages.length === 0) {
+      <div class="bg-blue-50 text-blue-700 rounded-lg p-4 text-sm">
+        Escribe una consulta en lenguaje natural. Por ejemplo:
+        <strong>comportamiento de incidentes por meses</strong>.
+      </div>
+    }
+
+    @for (message of messages; track $index) {
+      <div
+        class="message"
+        [class.user]="message.sender === 'user'"
+        [class.system]="message.sender === 'system'">
+
+        <div class="message-bubble">
+          {{ message.text }}
+        </div>
+      </div>
+    }
+
+    @if (loading) {
+      <div class="message system">
+        <div class="message-bubble">
+          Generando reporte...
+        </div>
+      </div>
+    }
+
+  </div>
+
+  <div class="flex gap-3">
+    <input
+      class="flex-1 border rounded-lg px-4 py-3"
+      type="text"
+      placeholder="Escribe tu consulta en lenguaje natural..."
+      [(ngModel)]="query"
+      (keyup.enter)="sendQuery()">
+
+    <button
+      type="button"
+      class="bg-blue-600 text-white rounded-lg px-5 py-3"
+      [disabled]="loading"
+      (click)="sendQuery()">
+      Enviar
+    </button>
+  </div>
+
+  <div class="mt-4 flex flex-wrap gap-2">
+    <span class="text-sm text-gray-600">Ejemplos:</span>
+
+    @for (example of examples; track example) {
+      <button
+        type="button"
+        class="text-sm border rounded-full px-3 py-1 hover:bg-blue-50"
+        (click)="useExample(example)">
+        {{ example }}
+      </button>
+    }
+  </div>
+
+  <p class="text-sm text-gray-500 mt-4">
+    Tip: sé específico con el periodo de tiempo, ubicación, categoría o entidad para mejores resultados.
+  </p>
+
+</div>

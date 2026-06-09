@@ -1,0 +1,35 @@
+.messages {
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.message {
+  display: flex;
+  margin-bottom: 12px;
+}
+
+.message.user {
+  justify-content: flex-end;
+}
+
+.message.system {
+  justify-content: flex-start;
+}
+
+.message-bubble {
+  max-width: 75%;
+  border-radius: 14px;
+  padding: 12px 16px;
+  font-size: 14px;
+}
+
+.message.user .message-bubble {
+  background-color: #e8f0ff;
+  color: #0f172a;
+}
+
+.message.system .message-bubble {
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  color: #0f172a;
+}

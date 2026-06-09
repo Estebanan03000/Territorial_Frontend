@@ -1,0 +1,34 @@
+<div class="p-6">
+
+  <div class="mb-6">
+    <h1 class="text-2xl font-bold">Reportes inteligentes</h1>
+    <p class="text-gray-600">
+      Consulta información del territorio en lenguaje natural y obtén reportes visuales al instante.
+    </p>
+  </div>
+
+  <div class="bg-white rounded-lg shadow p-5">
+
+    <div class="border-b mb-5">
+      <button class="px-4 py-3 border-b-2 border-blue-600 text-blue-600 font-semibold">
+        Chat de reportes
+      </button>
+
+    </div>
+
+    <app-report-chat
+      (reportGenerated)="onReportGenerated($event)">
+    </app-report-chat>
+
+    @if (currentReport) {
+      <div class="mt-6">
+        <app-report-chart-renderer
+          [report]="currentReport"
+          [question]="currentQuestion">
+        </app-report-chart-renderer>
+      </div>
+    }
+
+  </div>
+
+</div>
