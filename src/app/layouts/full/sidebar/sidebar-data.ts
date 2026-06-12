@@ -31,7 +31,7 @@ export const navItems: NavItem[] = [
   },
   {
     displayName: 'Comunas',
-    iconName: 'building-community',
+    iconName: 'solar:home-2-line-duotone',
     route: '/communes',
   },
   {
@@ -48,6 +48,11 @@ export const navItems: NavItem[] = [
     displayName: 'Reportes',
     iconName: 'solar:clipboard-text-line-duotone',
     route: '/reports',
+  },
+  {
+    displayName: 'Anotaciones',
+    iconName: 'solar:map-point-wave-line-duotone',
+    route: '/annotations/list',
   },
   {
     displayName: 'Mapa',

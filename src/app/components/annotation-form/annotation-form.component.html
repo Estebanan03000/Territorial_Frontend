@@ -1,0 +1,160 @@
+<form
+  [formGroup]="form"
+  (ngSubmit)="submit()"
+  class="p-4">
+
+  <div class="mb-3">
+
+    <label class="block mb-1">
+      Descripción
+    </label>
+
+    <textarea
+      rows="4"
+      formControlName="description"
+      class="w-full border rounded p-2">
+    </textarea>
+
+  </div>
+
+  <div class="mb-3">
+
+    <label class="block mb-1">
+      Barrio
+    </label>
+
+    <select
+      formControlName="id_neighborhood"
+      class="w-full border rounded p-2">
+
+      <option [ngValue]="null">
+        Seleccione
+      </option>
+
+      @for (
+        neighborhood of neighborhoods;
+        track neighborhood.id_neighborhood
+      ) {
+
+        <option
+          [value]="neighborhood.id_neighborhood">
+
+          {{ neighborhood.name }}
+
+        </option>
+
+      }
+
+    </select>
+
+  </div>
+
+  <div class="grid grid-cols-2 gap-4 mb-3">
+
+    <div>
+
+      <label>
+        Latitud
+      </label>
+
+      <input
+        type="number"
+        formControlName="latitude"
+        class="w-full border rounded p-2">
+
+    </div>
+
+    <div>
+
+      <label>
+        Longitud
+      </label>
+
+      <input
+        type="number"
+        formControlName="longitude"
+        class="w-full border rounded p-2">
+
+    </div>
+
+  </div>
+
+  <div class="mb-3">
+
+    <label>
+      Estado
+    </label>
+
+    <select
+      formControlName="status"
+      class="w-full border rounded p-2">
+
+      <option value="Activo">
+        Activo
+      </option>
+
+      <option value="Inactivo">
+        Inactivo
+      </option>
+
+    </select>
+
+  </div>
+
+  <div class="mb-3">
+
+    <label class="block mb-2">
+
+      Evidencia fotográfica
+
+    </label>
+
+    <input
+      type="file"
+      accept="image/*"
+      (change)="onFileSelected($event)"
+      class="w-full border rounded p-2">
+
+  </div>
+
+  <div class="flex gap-2">
+
+    <button
+      type="submit"
+      class="px-4 py-2 bg-blue-600 text-white rounded">
+
+      Guardar
+
+    </button>
+
+    <button
+      type="button"
+      (click)="onCancel()"
+      class="px-4 py-2 bg-gray-500 text-white rounded">
+
+      Cancelar
+
+    </button>
+
+  </div>
+
+</form>
+
+@if(previewUrl){
+
+  <div class="mb-3">
+
+    <img
+      [src]="previewUrl"
+      alt="Preview"
+      style="
+        width:220px;
+        height:220px;
+        object-fit:cover;
+        border-radius:12px;
+        border:1px solid #ddd;
+      ">
+
+  </div>
+
+}

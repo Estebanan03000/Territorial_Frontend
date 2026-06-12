@@ -1,0 +1,36 @@
+<div class="card">
+
+  <div class="card-body">
+
+    <h2 class="text-xl font-bold mb-4">
+
+      Crear anotación
+
+    </h2>
+
+    <p class="mb-3">
+
+      Selecciona una ubicación en el mapa.
+
+    </p>
+
+    <app-annotation-location-picker
+      (locationSelected)="onLocationSelected($event)">
+    </app-annotation-location-picker>
+
+    <div class="mt-4">
+
+      <app-annotation-form
+        [neighborhoods]="neighborhoods"
+        [latitude]="selectedLatitude"
+        [longitude]="selectedLongitude"
+        (formSubmit)="onCreate($event)"
+        (cancel)="onCancel()"
+        (imageSelected)="onImageSelected($event)">
+      </app-annotation-form>
+
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,23 @@
+<div class="mb-4">
+
+  <a
+    routerLink="/annotations/create"
+    class="px-4 py-2 rounded bg-blue-600 text-white">
+
+    Nueva anotación
+
+  </a>
+
+</div>
+
+<app-dynamic-table
+  [columns]="columns"
+  [actions]="actions"
+  [data]="annotations"
+  [page]="page"
+  [pageSize]="pageSize"
+  [totalItems]="total"
+  [loading]="loading"
+  (pageChange)="onPageChange($event)"
+  (action)="onTableAction($event)">
+</app-dynamic-table>

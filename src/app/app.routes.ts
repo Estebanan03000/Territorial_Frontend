@@ -78,6 +78,14 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'annotations',
+        canActivateChild: [AuthenticatedGuard],
+        loadChildren: () =>
+          import('./pages/annotations/annotations.routes').then(
+            (m) => m.AnnotationsRoutes
+          ),
+      },
+      {
         path: 'categories',
         canActivateChild: [AuthenticatedGuard],
         loadChildren: () =>
